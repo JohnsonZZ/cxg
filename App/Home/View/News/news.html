@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<include file="Public/header" />
+<body>
+	<include file="Public/nav" />
+	<!--page header / breadcrumbs-->
+<section class="breadcrumbs">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="page-header">
+                    <div class="row">
+                        <div class="col-md-8">
+                            <h1>新闻资讯</h1>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!--container-->
+<section id="container">
+    <div class="container">
+        <div class="row">
+            <section id="page-sidebar" class="pull-left col-md-8">
+
+                <article class="blog-post">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <h3 class="post-title">{$news['title']}</h3>
+                            <ul class="post-meta">
+                                <li><i class="fa fa-calendar"></i> <a>{$news['time']}</a></li>
+                            </ul>
+                            <div class="post-content">
+                                {$news['content']}
+                                <p><a href="{:U('News/index')}" class="btn btn-large btn-welcome"><i class="fa fa-chevron-right"></i>返回</a></p>
+                            </div>
+                        </div>
+                    </div>
+                </article>
+                <hr />
+            </section>
+            <!--sidebar-->
+            <aside id="sidebar" class="col-md-4">
+                <section>
+                    <h3 class="widget-title">关注热点</h3>
+                    <ul class="icons ul-list">
+                        <li><a href="#">Nam Interdum Tellus Nisi</a></li>
+                        <li><a href="#">Nullam Pharetra Velit Quam</a></li>
+                        <li><a href="#">Phasellus Blandit Cursus </a></li>
+                        <li><a href="#">Donec Vulputate Justo </a></li>
+                        <li><a href="#">Nulla Commodo Leo </a></li>
+                    </ul>
+                </section>
+            </aside>
+        </div>
+    </div>
+</section>
+
+	<include file="Public/footer" />
+	<include file="Public/script" />
+	<script>
+		$("#menu li:eq(3)").addClass("current").siblings().removeClass("current");
+	</script>
+</body>
+</html>

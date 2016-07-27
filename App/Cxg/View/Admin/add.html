@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html>
+    
+    <head>
+        <include file="Public/header" title="添加管理员 | 创星谷电子控制台" />
+		<link rel="stylesheet" href="__BOOTSTRAP__/css/fileinput.min.css">
+    </head>
+    
+    <body class="hold-transition skin-blue sidebar-mini">
+        <div class="wrapper">
+            <include file="Public/top" />
+            <include file="Public/left" />
+            <!-- Content Wrapper. Contains page content -->
+            <div class="content-wrapper">
+                <section class="content-header">
+                    <h1>
+                        管理员
+                    </h1>
+                    <ol class="breadcrumb">
+                        <li>
+                            <a href="{:U('Index/index')}">
+                                <i class="fa fa-dashboard">
+                                </i>
+                                控制台
+                            </a>
+                        </li>
+                        <li class="active">
+                            添加用户
+                        </li>
+                    </ol>
+                </section>
+                <section class="content">
+                    <div class="box box-primary">
+                        <div class="box-header with-border">
+                            <h3 class="box-title">
+                                添加用户
+                            </h3>
+                        </div>
+                        <!-- /.box-header -->
+                        <!-- form start -->
+                        <form id="form" action="{:U('update')}" method="post" enctype="multipart/form-data">
+                            <div class="box-body">
+                                <div class="form-group">
+                                    <label for="account">
+                                        账号
+                                    </label>
+                                    <input type="text" class="form-control" name="account" id="account" placeholder="输入账号">
+                                </div>
+								<div class="form-group">
+									<label for="account">
+                                        头像(不设置或者设置错误都将使用默认图片)
+                                    </label>
+									<input type="file" name="photo" id="avatar" />
+								</div>
+                                <div class="form-group">
+                                    <label for="pwd">
+                                        密码
+                                    </label>
+                                    <input type="password" class="form-control" name="pwd" id="pwd" placeholder="输入密码">
+                                </div>
+								<div class="form-group">
+                                    <label for="rpwd">
+                                        确认密码
+                                    </label>
+                                    <input type="password" class="form-control" name="rpwd" id="rpwd" placeholder="再次输入密码">
+                                </div>
+                            </div>
+                            <!-- /.box-body -->
+                            <div class="box-footer">
+                                <button type="submit" id="admin" class="btn btn-primary">
+                                    提交
+                                </button>
+                            </div>
+                        </form>
+                    </div>
+                    <!-- /.box -->
+                    <section>
+            </div>
+            <!-- /.content-wrapper -->
+            <include file="Public/footer" />
+        </div>
+        <!-- ./wrapper -->
+        <include file="Public/script" />
+		<script src="__BOOTSTRAP__/js/fileinput.min.js"></script>
+		<script src="__BOOTSTRAP__/js/fileinput_locale_zh.js"></script>
+        <script>
+            $('#pAdmin').addClass("active").siblings().removeClass("active");
+            $('#aAdmin').addClass("active");
+			$('#avatar').fileinput({
+                language: 'zh', //设置语言
+                allowedFileExtensions : ['jpg', 'png','gif'],//接收的文件后缀,
+                showUpload: false, //是否显示上传按钮
+                showCaption: false,//是否显示标题
+                browseClass: "btn btn-primary", //按钮样式 
+				maxFileSize: 1024,
+            });
+			$('#admin').click(function(){
+				var pwd = $('#pwd').val();
+				var rpwd = $('#rpwd').val();
+				if(pwd == rpwd){
+					return true;
+				}else{
+					layer.msg("账号密码不正确");
+					return false;
+				}
+			});
+        </script>
+    </body>
+
+</html>

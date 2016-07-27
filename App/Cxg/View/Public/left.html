@@ -1,0 +1,54 @@
+<!-- Left side column. contains the logo and sidebar -->
+	<aside class="main-sidebar">
+        <!-- sidebar: style can be found in sidebar.less -->
+        <section class="sidebar">
+          <!-- search form -->
+          <form action="#" method="get" class="sidebar-form">
+            <div class="input-group">
+              <input type="text" name="q" class="form-control" placeholder="Search...">
+              <span class="input-group-btn">
+                <button type="submit" name="search" id="search-btn" class="btn btn-flat"><i class="fa fa-search"></i></button>
+              </span>
+            </div>
+          </form>
+          <!-- /.search form -->
+          <!-- sidebar menu: : style can be found in sidebar.less -->
+          <ul class="sidebar-menu">
+            <li class="header">主菜单</li>
+            <li class="active treeview">
+              <a href="{:U('Index/index')}">
+                <i class="fa fa-dashboard"></i> <span>控制台</span>
+              </a>
+            </li>
+			<li id="pNews" class="treeview">
+              <a href="#">
+                <i class="fa fa-laptop"></i>
+                <span>新闻列表</span>
+                <i class="fa fa-angle-left pull-right"></i>
+              </a>
+              <ul class="treeview-menu">
+                <li id="iNews"><a href="{:U('News/index')}"><i class="fa fa-circle-o"></i> 查看新闻</a></li>
+                <li id="aNews"><a href="{:U('News/add')}"><i class="fa fa-circle-o"></i> 添加新闻</a></li>
+              </ul>
+            </li>
+			<li id="pArea"><a href="{:U('Area/index')}"><i class="fa fa-circle-o "></i> <span>办公场地</span></a></li>
+			<li id="pTrain"><a href="{:U('Train/index')}"><i class="fa fa-circle-o "></i> <span>培训</span></a></li>
+			<li id="pStudy"><a href="{:U('Study/index')}"><i class="glyphicon glyphicon-pencil"></i> <span>学习机会</span></a></li>
+			<li id="pAdmin" class="treeview">
+              <a href="#">
+                <i class="fa fa-key"></i>
+                <span>管理员组</span>
+                <i class="fa fa-angle-left pull-right"></i>
+              </a>
+              <ul class="treeview-menu">
+                <li id="iAdmin"><a href="{:U('Admin/index')}"><i class="fa fa-circle-o"></i> 管理员列表</a></li>
+                <li id="aAdmin"><a href="{:U('Admin/add')}"><i class="fa fa-circle-o"></i> 添加管理员</a></li>
+              </ul>
+            </li>
+            <li id="important"><a href="#"><i class="fa fa-circle-o text-red"></i> <span>重要信息</span></a></li>
+            <li id="warning"><a href="#"><i class="fa fa-circle-o text-yellow"></i> <span>警告信息</span></a></li>
+            <li id="info"><a href="#"><i class="fa fa-circle-o text-aqua"></i> <span>一般信息</span></a></li>
+          </ul>
+        </section>
+        <!-- /.sidebar -->
+      </aside>

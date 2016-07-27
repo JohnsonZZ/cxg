@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<include file="Public/header" />
+<script type="text/javascript" src="http://api.map.baidu.com/api?v=2.0&ak=Abcty2d6CGtscG1TZK3K32ZFIR5bMURZ"></script>
+<body>
+	<include file="Public/nav" />
+	<!--page header / breadcrumbs-->
+<section class="breadcrumbs">
+    <div class="container">
+        <div class="page-header">
+            <div class="row">
+                <div class="col-md-8">
+                    <h3>联系我们</h3>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!--container-->
+<section id="container">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+				<div style="width:100p%;height:350px;border:#ccc solid 1px;font-size:12px" id="map"></div>
+            </div>
+        </div>
+        <div class="row">
+            <section id="page-sidebar" class="col-md-8">
+                <h4>留言</h4>
+                <form name="contact" method="post" action="{:U('index')}" class="form-horizontal" />
+                    <div class="form-group">
+						<label for="nick" class="col-sm-2 control-label">昵称</label>
+						<div class="col-sm-9">
+							<input type="text" class="form-control" id="nick" name="nick" placeholder="昵称">
+						</div>
+					</div>
+					<div class="form-group">
+						<label for="email" class="col-sm-2 control-label">邮箱</label>
+						<div class="col-sm-9">
+							<input type="email" class="form-control" id="email" name="email" placeholder="邮箱">
+						</div>
+					</div>
+					<div class="form-group">
+						<label for="cnt" class="col-sm-2 control-label">内容</label>
+						<div class="col-sm-9">
+							<textarea name="cnt" id="cnt" class="form-control" rows="5"></textarea>
+						</div>
+					</div>
+                    <div class="af-outer af-required" style="text-align:center">
+                        <div class="af-inner">
+                            <input type="button" name="submit" id="addSubmit" class="form-button btn btn-welcome btn-large" id="submit_btn" value="发送" />
+                        </div>
+                    </div>
+                </form>
+            </section>
+            <!--sidebar-->
+            <aside id="sidebar" class="col-md-4">
+                <!--address-->
+                <section>
+                    <h4>联系方式</h4>
+                    <address>
+                        <p>
+                            <i class="fa fa-map-marker"></i> 肇庆市睦岗镇南亚路<br />
+                            <i class="fa fa-user"></i>  (0758)2877017<br />							
+                            <i class="fa fa-user"></i> FAX:(0758)2878014<br />
+                            <i class="fa fa-envelope"></i> <a href="mailto:#">sales@ledtech.com.cn</a>
+                        </p>
+                    </address>
+                </section>
+                <section>
+                    <h4>工作时间</h4>
+                    <ul class="unstyled">
+                        <li class="clearfix" style="height:30px">星期一 ~ 星期五:<p class="fr">上午9：00 to 下午6：00</p></li>
+                        <li class="clearfix" style="height:30px">星期六:<p class="fr">上午10：00 to 下午4：00</p></li>
+                        <li class="clearfix" style="height:30px">星期日:<p class="fr">休息</p></li>
+                    </ul>
+                </section>
+            </aside>
+        </div>
+    </div>    
+</section>
+	<include file="Public/footer" />
+	<include file="Public/script" />
+	<script src="__PLUGINS__/layer/layer.js"></script>
+	<script>
+		$("#menu li:eq(4)").addClass("current").siblings().removeClass("current");
+		//创建和初始化地图函数：
+		function initMap(){
+		  createMap();//创建地图
+		  setMapEvent();//设置地图事件
+		  addMapControl();//向地图添加控件
+		  addMapOverlay();//向地图添加覆盖物
+		}
+		function createMap(){ 
+		  map = new BMap.Map("map"); 
+		  map.centerAndZoom(new BMap.Point(112.449651,23.065412),16);
+		}
+		function setMapEvent(){
+		  map.enableScrollWheelZoom();
+		  map.enableKeyboard();
+		  map.enableDragging();
+		  map.enableDoubleClickZoom()
+		}
+		function addClickHandler(target,window){
+		  target.addEventListener("click",function(){
+			target.openInfoWindow(window);
+		  });
+		}
+		function addMapOverlay(){
+		  var markers = [
+			{content:"电话：(0758)2877017<br />传真：(0758)2878014",title:"肇庆市创星谷电子有限公司",imageOffset: {width:-46,height:-21},position:{lat:23.065312,lng:112.447638}}
+		  ];
+		  for(var index = 0; index < markers.length; index++ ){
+			var point = new BMap.Point(markers[index].position.lng,markers[index].position.lat);
+			var marker = new BMap.Marker(point,{icon:new BMap.Icon("http://api.map.baidu.com/lbsapi/createmap/images/icon.png",new BMap.Size(20,25),{
+			  imageOffset: new BMap.Size(markers[index].imageOffset.width,markers[index].imageOffset.height)
+			})});
+			var label = new BMap.Label(markers[index].title,{offset: new BMap.Size(25,5)});
+			var opts = {
+			  width: 200,
+			  title: markers[index].title,
+			  enableMessage: false
+			};
+			var infoWindow = new BMap.InfoWindow(markers[index].content,opts);
+			marker.setLabel(label);
+			addClickHandler(marker,infoWindow);
+			map.addOverlay(marker);
+		  };
+		}
+		//向地图添加控件
+		function addMapControl(){
+		  var scaleControl = new BMap.ScaleControl({anchor:BMAP_ANCHOR_BOTTOM_LEFT});
+		  scaleControl.setUnit(BMAP_UNIT_IMPERIAL);
+		  map.addControl(scaleControl);
+		  var navControl = new BMap.NavigationControl({anchor:BMAP_ANCHOR_TOP_LEFT,type:BMAP_NAVIGATION_CONTROL_LARGE});
+		  map.addControl(navControl);
+		  var overviewControl = new BMap.OverviewMapControl({anchor:BMAP_ANCHOR_BOTTOM_RIGHT,isOpen:true});
+		  map.addControl(overviewControl);
+		}
+		var map;
+		  initMap();
+		 $('#addSubmit').click(function(){
+			layer.msg("提交成功");					
+		 });
+	</script>
+</body>
+</html>

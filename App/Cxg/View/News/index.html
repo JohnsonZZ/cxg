@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<include file="Public/header" title="新闻列表 | 创星谷电子有控制台"/>
+	</head>
+<body class="hold-transition skin-blue sidebar-mini">
+	<div class="wrapper">
+		<include file="Public/top" />
+		<include file="Public/left" />
+		<!-- Content Wrapper. Contains page content -->
+		<div class="content-wrapper">
+		<section class="content-header">
+          <h1>
+            新闻列表
+          </h1>
+          <ol class="breadcrumb">
+            <li><a href="{:U('Index/index')}"><i class="fa fa-dashboard"></i> 控制台</a></li>
+            <li class="active">查看新闻</li>
+          </ol>
+        </section>
+		<section class="content">
+		<div class="row">
+            <div class="col-xs-12">
+              <div class="box box-primary">
+                <div class="box-header">
+                  <div class="search-box">
+					  <form class="form-inline" action="" method="get">
+					    <select name="order" class="form-control input-sm">
+							<option value="asc">发布时间升</option>
+							<option value="desc">发布时间降</option>
+						</select>
+						<select name="field" class="form-control input-sm">
+							<option value="title">标题</option>
+							<option value="content">内容</option>
+						</select>
+						<div class="input-group" style="width: 150px;">
+						  <input type="text" name="table_search" class="form-control input-sm pull-right" placeholder="Search">
+						  <div class="input-group-btn">
+							<button type="submit" class="btn btn-sm btn-default"><i class="fa fa-search"></i></button>
+						  </div>
+						</div>
+					  </form>
+                  </div>
+                </div><!-- /.box-header -->
+				<form id="form" action="{:U('del')}" method="post">
+                <div class="box-body table-responsive no-padding">
+                  <table class="table table-hover">
+                    <tr>
+                        <th class="center"><input class="check-all" type="checkbox" value=""></th>
+						<th>标题</th>
+						<th>新闻摘要</th>
+						<th>发布时间</th>
+						<th class="center">操作</th>
+				    </tr>
+					<volist name="list" id="val">
+                    <tr>
+						<td class="center">
+							<input class="lids" type="checkbox" name="id[]" value="{$val['id']}">
+						</td>
+						<td>{$val['title']}</td>
+						<td>{$val['brief']}</td>
+						<td>{$val['time']}</td>
+						<td class="center"><a href="{:U('edit')}?id={$val['id']}"><i class="fa fa-edit"></i></a>&nbsp;&nbsp;&nbsp;&nbsp;<a class="del" href="javascript:;" val="{:U('del')}?id={$val['id']}" title="删除"><i class="fa fa-trash-o"></i></a></td>
+									
+				   </tr>
+				   </volist>
+                  </table>
+                </div><!-- /.box-body -->
+				<div class="box-footer clearfix">
+				  <button type="button" id="del" class="btn btn-default">删除</button>
+				  <a href="{:U('add')}" class="btn btn-default">添加</a>
+                  <ul class="pagination pagination-sm no-margin pull-right">
+                   {$page}
+                  </ul>
+                </div>
+				</form>
+              </div><!-- /.box -->
+            </div>
+          </div>
+		  </section><!-- /.content -->
+	    </div>
+		<!-- /.content-wrapper -->
+		<include file="Public/footer" />
+    </div><!-- ./wrapper -->
+	<include file="Public/script" />
+	<script>
+		$('#pNews').addClass("active").siblings().removeClass("active");
+		$('#iNews').addClass("active");
+		$(function(){
+			$(".check-all").click(function(){
+				$(".lids").prop("checked", this.checked);
+			});
+			$(".lids").click(function(){
+				$(".lids").each(function(i){
+					if(!this.checked){
+						$(".check-all").prop("checked", false);
+						return false;
+					}else{
+						$(".check-all").prop("checked", true);
+					}
+				});
+			})
+			$("#del").click(function(){
+				layer.open({
+					icon:0,
+					title: '删除列表',
+					type: 0, 
+					content: '是否删除选中列表',
+					btn: ['确认', '取消'],
+					yes: function(){
+						$('#form').submit();
+						}
+				});	
+			})
+			$(".del").click(function(){
+				var val=$(this).attr('val');
+				layer.open({
+					icon:0,
+					title: '删除列表',
+					type: 0, 
+					content: '是否删除选中列表',
+					btn: ['确认', '取消'],
+					yes: function(){
+							location.href = val;
+						}
+				});	
+			})
+		})
+	</script>
+</body>
+</html>
