@@ -2053,5 +2053,5 @@ float:right;
     width:70%
     }
 }
-..article img{max-width:100%}
+.article img{max-width:100%}
 .article .title{text-align:center;margin-top:50px;}
