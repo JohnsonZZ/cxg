@@ -19,25 +19,40 @@ class ServicesController extends Controller {
 	public function article(){
 		$data['id'] = I('get.id');
 		$news = M('News')->where($data)->find();
-		$this -> assign($news);
+		$this -> assign('news',$news);
 		$this->display();
 	}
 	
 	
 	
 	public function area(){
+		$area = M('Area')->find();
+		$this -> assign('area',$area);
         $this -> display();
 	}
 	public function train(){
+		$train = M('Train')->find();
+		
+		$this -> assign('train',$train);
         $this -> display();
+
 	}
 	public function product(){
+		//$product = M('Product')->find();
+		//$this -> assign('product',$product);
         $this -> display();
+
 	}
 	public function data(){
+		//$data = M('Data')->find();
+		//$this -> assign('data',$data);
         $this -> display();
+
 	}
 	public function study(){
+		$study = M('Study')->find();
+		$this -> assign('study',$study);
         $this -> display();
+
 	}
 }
