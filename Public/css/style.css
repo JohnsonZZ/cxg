@@ -2050,7 +2050,8 @@ float:right;
 .callback-content a:hover{color:#BD2D30}
 @media screen and (min-width: 1200px) {
   .article {
-    width:60%
+    width:70%
     }
 }
+..article img{max-width:100%}
 .article .title{text-align:center;margin-top:50px;}
