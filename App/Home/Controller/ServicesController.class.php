@@ -44,8 +44,8 @@ class ServicesController extends Controller {
 
 	}
 	public function data(){
-		//$data = M('Data')->find();
-		//$this -> assign('data',$data);
+		$yule = M('Yule')->find();
+		$this -> assign('yule',$yule);
         $this -> display();
 
 	}
