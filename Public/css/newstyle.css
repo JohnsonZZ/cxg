@@ -1,8 +1,7 @@
 .navigation .nav1 .nav {position:absolute; display:none ;background-color:#D34346}
 .team-header-about {width:150px; text-align:center ;  margin:25px auto 25px auto; border-left:none;}
-.container .news-title{width:11%; margin:auto; margin-top:25px; margin-bottom:25px;}
 .container .news-content{min-height:300px}
-.container .news-content li{width:80%; margin:auto; margin-bottom:15px;}
+.container .news-content li{margin:auto; margin-bottom:15px;}
 .container .news-content a{cursor:pointer; font-size:20px; text-decoration:none; line-height:20px; color:#666666}
 .container .news-content a:hover{color:#D34346;}
 .container .news-content span{float:right}
