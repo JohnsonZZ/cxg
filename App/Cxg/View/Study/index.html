@@ -37,7 +37,7 @@
                         </div>
                         <!-- /.box-header -->
                         <!-- form start -->
-                        <form role="form" action="{:U('update')}" method="post">
+                        <form role="form" action="{:U('update')}" method="post" enctype="multipart/form-data">
 							<input type="hidden" name="id" value="{$list[id]}" />
                             <div class="box-body">
 								<div class="form-group">
@@ -70,8 +70,6 @@
 		<script>
 			var ue = UE.getEditor('content',{ initialFrameWidth: null });
 			$('#addSubmit').click(function(){
-				var title = $('#title').val();		
-				var brief = $('#brief').val()
 				ue.ready(function(){ 					
 						$('#content').value = ue.getContent();		
 				});
