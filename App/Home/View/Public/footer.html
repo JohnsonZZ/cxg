@@ -5,13 +5,25 @@
 			<div class="clearfix"></div>
 	</div>
 	<script type="text/javascript">
-		$('#services').hover(function(){
-			$('.nav').show();
-		
-		},
-		function(){
-			$('.nav').hide()
-		}
-		);	
+	
+		$(function(){
+			
+			$('#services').hover(function(){
+				$('.nav').show();
+			},
+			function(){
+				$('.nav').hide()
+			}
+			);
+
+			$('#service').toggle(function(){
+				$('.nav').show();
+			},
+			function(){
+				$('.nav').hide()
+			}
+			);	
+		})
+			
 	</script>
 </div>

@@ -5,3 +5,8 @@
 .container .news-content a{cursor:pointer; font-size:20px; text-decoration:none; line-height:20px; color:#666666}
 .container .news-content a:hover{color:#D34346;}
 .container .news-content span{float:right}
+#service {display:none}
+@media screen and (max-width: 640px) {
+  #service{display:block }
+  #services{display:none }
+}
